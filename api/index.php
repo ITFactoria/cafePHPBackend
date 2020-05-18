@@ -1,5 +1,5 @@
 <form action="" method="POST">
-    <label>Enter QR Id:</label><br />
+    <label>Hola Enter Id:</label><br />
     <input type="text" name="qr_id" placeholder="Enter QR Id" required />
     <br /><br />
     <button type="submit" name="submit">Submit</button>
@@ -11,10 +11,10 @@ if (isset($_POST['qr_id']) && $_POST['qr_id'] != "") {
 
     //$url = "http://localhost/rest/api/" . $order_id;
     //Local Environment
-    //$url = "http://192.168.64.2/cafe/api/qr/read.php?id=" . $qr_id;
+    $url = "http://192.168.64.2/cafe/api/qr/read.php?id=" . $qr_id;
     
     //Dev Environment
-    $url="http://149.56.130.61:8080/cafev3/api/qr/read.php?id=" . $qr_id;
+    //$url="http://149.56.130.61:8080/cafev3/api/qr/read.php?id=" . $qr_id;
 
 
     $qr = curl_init($url);

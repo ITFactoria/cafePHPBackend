@@ -9,36 +9,38 @@ header('Content-Type: application/json');
 
 //include database and object files
 include_once '../config/database.php';
-include_once '../models/qr.php';
+include_once '../models/activo.php';
 
 $database = new Database();
 $connection = $database->getConnection();
 
-
 //inialize object
-$qr = new Qr($connection);
+$activo = new Activo($connection);
 
 // set ID property of record to read
-$qr->id = isset($_GET['id']) ? $_GET['id'] : die();
+$activo->id = isset($_GET['id']) ? $_GET['id'] : die();
+
 
 // read the details of user to be edited
-$qr->read();
+$activo->read();
 
-if ($qr->clave != null) {
+if ($activo->nombre != null) {
     // create array
-    $qr_array = array(
-        "id" =>  $qr->id,
-        "clave" => $qr->clave,
-        "fechacreacion" => $qr->fechacreacion,
-        "fechacompra" => $qr->fechacompra,
-        "fechaactivacion" => $qr->fechaactivacion,
+    $activo_array = array(
+        "id" =>  $activo->id,
+        "idRol" =>  $activo->idRol,
+        "idUsuario" =>  $activo->idUsuario,
+        "nombre" => $activo->nombre,
+        "fichaTecnica" => $activo->fichaTecnica,
+        "ubicacion" => $activo->ubicacion,
+       
     );
 
     // set response code - 200 OK
     http_response_code(200);
 
     // make it json format
-    echo json_encode($qr_array);
+    echo json_encode($activo_array);
 } else {
 
     
@@ -46,5 +48,5 @@ if ($qr->clave != null) {
     http_response_code(404);
 
     // tell the user product does not exist
-    echo json_encode(array("message" => "Object does not exist."));
+    echo json_encode(array("message" => "Object does not exist." . $result));
 }

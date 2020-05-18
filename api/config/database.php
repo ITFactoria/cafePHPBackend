@@ -2,18 +2,18 @@
 class Database
 {
     //Local environment
-    /*private $host = "localhost";
-    private $dbname = "cafe";
-    private $user = "root";
-    private $pswd = "";
-    public $connection;*/
-
-    //Dev environment
     private $host = "localhost";
     private $dbname = "cafe";
     private $user = "root";
-    private $pswd = "Admin2020";
+    private $pswd = "";
     public $connection;
+
+    //Dev environment
+    /*private $host = "localhost";
+    private $dbname = "cafe";
+    private $user = "root";
+    private $pswd = "Admin2020";
+    public $connection;*/
 
 
     public function getConnection()

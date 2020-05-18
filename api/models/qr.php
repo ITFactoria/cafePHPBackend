@@ -29,6 +29,7 @@ class Qr
         return $stmt;
     }
 
+    
     public function read()
     {
         $query = "SELECT p.idqr, p.clave, p.fechacreado, p.fechacompra, p.fechaactivacion FROM " . $this->tableName . " p WHERE p.idqr =?";
